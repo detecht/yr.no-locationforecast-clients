@@ -1118,7 +1118,7 @@ export const DataApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        classicFormatGet(lat: number, lon: number, format: ClassicFormatGetFormatEnum, altitude?: number, options?: any): AxiosPromise<string> {
+        classicFormatGet(lat: number, lon: number, format: ClassicFormatGetFormatEnum, altitude?: number, options?: RawAxiosRequestConfig): AxiosPromise<string> {
             return localVarFp.classicFormatGet(lat, lon, format, altitude, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1129,7 +1129,7 @@ export const DataApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        classicGet(lat: number, lon: number, altitude?: number, options?: any): AxiosPromise<string> {
+        classicGet(lat: number, lon: number, altitude?: number, options?: RawAxiosRequestConfig): AxiosPromise<string> {
             return localVarFp.classicGet(lat, lon, altitude, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1141,7 +1141,7 @@ export const DataApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        compactFormatGet(lat: number, lon: number, format: CompactFormatGetFormatEnum, altitude?: number, options?: any): AxiosPromise<METJSONForecast> {
+        compactFormatGet(lat: number, lon: number, format: CompactFormatGetFormatEnum, altitude?: number, options?: RawAxiosRequestConfig): AxiosPromise<METJSONForecast> {
             return localVarFp.compactFormatGet(lat, lon, format, altitude, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1152,7 +1152,7 @@ export const DataApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        compactGet(lat: number, lon: number, altitude?: number, options?: any): AxiosPromise<METJSONForecast> {
+        compactGet(lat: number, lon: number, altitude?: number, options?: RawAxiosRequestConfig): AxiosPromise<METJSONForecast> {
             return localVarFp.compactGet(lat, lon, altitude, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1164,7 +1164,7 @@ export const DataApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeFormatGet(lat: number, lon: number, format: CompleteFormatGetFormatEnum, altitude?: number, options?: any): AxiosPromise<METJSONForecast> {
+        completeFormatGet(lat: number, lon: number, format: CompleteFormatGetFormatEnum, altitude?: number, options?: RawAxiosRequestConfig): AxiosPromise<METJSONForecast> {
             return localVarFp.completeFormatGet(lat, lon, format, altitude, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1175,7 +1175,7 @@ export const DataApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeGet(lat: number, lon: number, altitude?: number, options?: any): AxiosPromise<METJSONForecast> {
+        completeGet(lat: number, lon: number, altitude?: number, options?: RawAxiosRequestConfig): AxiosPromise<METJSONForecast> {
             return localVarFp.completeGet(lat, lon, altitude, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1184,7 +1184,7 @@ export const DataApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        statusFormatGet(format: StatusFormatGetFormatEnum, options?: any): AxiosPromise<string> {
+        statusFormatGet(format: StatusFormatGetFormatEnum, options?: RawAxiosRequestConfig): AxiosPromise<string> {
             return localVarFp.statusFormatGet(format, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1192,7 +1192,7 @@ export const DataApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        statusGet(options?: any): AxiosPromise<string> {
+        statusGet(options?: RawAxiosRequestConfig): AxiosPromise<string> {
             return localVarFp.statusGet(options).then((request) => request(axios, basePath));
         },
     };
@@ -1529,7 +1529,7 @@ export const MetadataApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        changelogGet(options?: any): AxiosPromise<void> {
+        changelogGet(options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.changelogGet(options).then((request) => request(axios, basePath));
         },
         /**
@@ -1537,7 +1537,7 @@ export const MetadataApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        healthzGet(options?: any): AxiosPromise<void> {
+        healthzGet(options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.healthzGet(options).then((request) => request(axios, basePath));
         },
         /**
@@ -1545,7 +1545,7 @@ export const MetadataApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        locationsGet(options?: any): AxiosPromise<void> {
+        locationsGet(options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.locationsGet(options).then((request) => request(axios, basePath));
         },
         /**
@@ -1553,7 +1553,7 @@ export const MetadataApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaGet(options?: any): AxiosPromise<void> {
+        schemaGet(options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.schemaGet(options).then((request) => request(axios, basePath));
         },
     };
