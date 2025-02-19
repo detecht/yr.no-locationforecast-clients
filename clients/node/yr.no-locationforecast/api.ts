@@ -919,106 +919,6 @@ export const DataApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * Weather forecast for a specified place
-         * @param {number} lat Latitude
-         * @param {number} lon Longitude
-         * @param {MiniFormatGetFormatEnum} format format code (file extension)
-         * @param {number} [altitude] Whole meters above sea level
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        miniFormatGet: async (lat: number, lon: number, format: MiniFormatGetFormatEnum, altitude?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'lat' is not null or undefined
-            assertParamExists('miniFormatGet', 'lat', lat)
-            // verify required parameter 'lon' is not null or undefined
-            assertParamExists('miniFormatGet', 'lon', lon)
-            // verify required parameter 'format' is not null or undefined
-            assertParamExists('miniFormatGet', 'format', format)
-            const localVarPath = `/mini.{format}`
-                .replace(`{${"format"}}`, encodeURIComponent(String(format)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (altitude !== undefined) {
-                localVarQueryParameter['altitude'] = altitude;
-            }
-
-            if (lat !== undefined) {
-                localVarQueryParameter['lat'] = lat;
-            }
-
-            if (lon !== undefined) {
-                localVarQueryParameter['lon'] = lon;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Weather forecast for a specified place
-         * @param {number} lat Latitude
-         * @param {number} lon Longitude
-         * @param {number} [altitude] Whole meters above sea level
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        miniGet: async (lat: number, lon: number, altitude?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'lat' is not null or undefined
-            assertParamExists('miniGet', 'lat', lat)
-            // verify required parameter 'lon' is not null or undefined
-            assertParamExists('miniGet', 'lon', lon)
-            const localVarPath = `/mini`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (altitude !== undefined) {
-                localVarQueryParameter['altitude'] = altitude;
-            }
-
-            if (lat !== undefined) {
-                localVarQueryParameter['lat'] = lat;
-            }
-
-            if (lon !== undefined) {
-                localVarQueryParameter['lon'] = lon;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Weather forecast for a specified place
          * @param {StatusFormatGetFormatEnum} format format code (file extension)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1178,35 +1078,6 @@ export const DataApiFp = function(configuration?: Configuration) {
         },
         /**
          * Weather forecast for a specified place
-         * @param {number} lat Latitude
-         * @param {number} lon Longitude
-         * @param {MiniFormatGetFormatEnum} format format code (file extension)
-         * @param {number} [altitude] Whole meters above sea level
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async miniFormatGet(lat: number, lon: number, format: MiniFormatGetFormatEnum, altitude?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<METJSONForecast>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.miniFormatGet(lat, lon, format, altitude, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DataApi.miniFormatGet']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Weather forecast for a specified place
-         * @param {number} lat Latitude
-         * @param {number} lon Longitude
-         * @param {number} [altitude] Whole meters above sea level
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async miniGet(lat: number, lon: number, altitude?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<METJSONForecast>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.miniGet(lat, lon, altitude, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DataApi.miniGet']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Weather forecast for a specified place
          * @param {StatusFormatGetFormatEnum} format format code (file extension)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1306,29 +1177,6 @@ export const DataApiFactory = function (configuration?: Configuration, basePath?
          */
         completeGet(lat: number, lon: number, altitude?: number, options?: any): AxiosPromise<METJSONForecast> {
             return localVarFp.completeGet(lat, lon, altitude, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Weather forecast for a specified place
-         * @param {number} lat Latitude
-         * @param {number} lon Longitude
-         * @param {MiniFormatGetFormatEnum} format format code (file extension)
-         * @param {number} [altitude] Whole meters above sea level
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        miniFormatGet(lat: number, lon: number, format: MiniFormatGetFormatEnum, altitude?: number, options?: any): AxiosPromise<METJSONForecast> {
-            return localVarFp.miniFormatGet(lat, lon, format, altitude, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Weather forecast for a specified place
-         * @param {number} lat Latitude
-         * @param {number} lon Longitude
-         * @param {number} [altitude] Whole meters above sea level
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        miniGet(lat: number, lon: number, altitude?: number, options?: any): AxiosPromise<METJSONForecast> {
-            return localVarFp.miniGet(lat, lon, altitude, options).then((request) => request(axios, basePath));
         },
         /**
          * Weather forecast for a specified place
@@ -1440,33 +1288,6 @@ export class DataApi extends BaseAPI {
 
     /**
      * Weather forecast for a specified place
-     * @param {number} lat Latitude
-     * @param {number} lon Longitude
-     * @param {MiniFormatGetFormatEnum} format format code (file extension)
-     * @param {number} [altitude] Whole meters above sea level
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DataApi
-     */
-    public miniFormatGet(lat: number, lon: number, format: MiniFormatGetFormatEnum, altitude?: number, options?: RawAxiosRequestConfig) {
-        return DataApiFp(this.configuration).miniFormatGet(lat, lon, format, altitude, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Weather forecast for a specified place
-     * @param {number} lat Latitude
-     * @param {number} lon Longitude
-     * @param {number} [altitude] Whole meters above sea level
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DataApi
-     */
-    public miniGet(lat: number, lon: number, altitude?: number, options?: RawAxiosRequestConfig) {
-        return DataApiFp(this.configuration).miniGet(lat, lon, altitude, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Weather forecast for a specified place
      * @param {StatusFormatGetFormatEnum} format format code (file extension)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1508,13 +1329,6 @@ export const CompleteFormatGetFormatEnum = {
     Json: 'json'
 } as const;
 export type CompleteFormatGetFormatEnum = typeof CompleteFormatGetFormatEnum[keyof typeof CompleteFormatGetFormatEnum];
-/**
- * @export
- */
-export const MiniFormatGetFormatEnum = {
-    Json: 'json'
-} as const;
-export type MiniFormatGetFormatEnum = typeof MiniFormatGetFormatEnum[keyof typeof MiniFormatGetFormatEnum];
 /**
  * @export
  */
@@ -1566,6 +1380,35 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
          */
         healthzGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/healthz`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * List available locations as GeoJSON FeatureCollection
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        locationsGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/locations`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1650,6 +1493,17 @@ export const MetadataApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * List available locations as GeoJSON FeatureCollection
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async locationsGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.locationsGet(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MetadataApi.locationsGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Schema for XML data
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1687,6 +1541,14 @@ export const MetadataApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.healthzGet(options).then((request) => request(axios, basePath));
         },
         /**
+         * List available locations as GeoJSON FeatureCollection
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        locationsGet(options?: any): AxiosPromise<void> {
+            return localVarFp.locationsGet(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Schema for XML data
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1722,6 +1584,16 @@ export class MetadataApi extends BaseAPI {
      */
     public healthzGet(options?: RawAxiosRequestConfig) {
         return MetadataApiFp(this.configuration).healthzGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * List available locations as GeoJSON FeatureCollection
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetadataApi
+     */
+    public locationsGet(options?: RawAxiosRequestConfig) {
+        return MetadataApiFp(this.configuration).locationsGet(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
